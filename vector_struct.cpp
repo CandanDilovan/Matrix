@@ -1,10 +1,12 @@
 #include "vector_struct.hpp"
-#include <string>
 
-Vector::Vector(float *vect)
+Vector::Vector(float *vect, int size)
 {
     if (vect)
+    {
+        this->vect_size = size;
         this->vect = vect;
+    }
 }
 Vector::~Vector()
 {
@@ -24,24 +26,35 @@ Vector & Vector::operator=(Vector const & rhs)
 
 int Vector::size()
 {
-    int a = 0;
-    while (this->vect[a])
-        a++;
-    std::cout << a << std::endl;
-    return (a);
+    int array_size = this->vect_size / sizeof(this->vect[0]);
+    return (array_size);
 }
 
-std::string Vector::getVect()
+void Vector::display()
 {
-    std::string vect;
+    std::string array;
+    int vect_size = this->size();
 
-    vect += "{";
-    int b = this->size();
-    for (int a = 0; a < b; a++)
+    for (int a = 0; a < vect_size; a++)
     {
-        vect += std::to_string(this->vect[a]);
-        vect += ", ";
+        std::string number = std::to_string(this->vect[a]);
+        array += this->remove_zero(number);
+        if (a + 1 != vect_size)
+            array += ", ";
     }
-    vect += "}";
-    return (vect);
+    std::cout << "[" << array << "]" << std::endl;
+}
+
+float *Vector::getVect()
+{
+    return (this->vect);
+}
+
+
+
+std::string Vector::remove_zero(std::string number)
+{
+    while (number.find_last_of('0') == number.size() - 1 || number.back() == '.')
+        number.pop_back();
+    return (number);
 }
