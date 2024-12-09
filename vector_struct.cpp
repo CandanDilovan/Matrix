@@ -4,13 +4,15 @@ Vector::Vector(float *vect, int size)
 {
     if (vect)
     {
-        this->vect_size = size;
-        this->vect = vect;
+        this->vect_size = size / sizeof(vect[0]);
+        this->vect = new float[this->vect_size];
+        for (int a = 0; a < this->vect_size; a++)
+            this->vect[a] = vect[a];
     }
 }
 Vector::~Vector()
 {
-
+    delete [] this->vect;
 }
 
 Vector::Vector(const Vector & src)
@@ -26,8 +28,7 @@ Vector & Vector::operator=(Vector const & rhs)
 
 int Vector::size()
 {
-    int array_size = this->vect_size / sizeof(this->vect[0]);
-    return (array_size);
+    return (this->vect_size);
 }
 
 void Vector::display()
