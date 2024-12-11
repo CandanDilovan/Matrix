@@ -6,7 +6,7 @@
 /*   By: dcandan <dcandan@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/27 13:43:12 by dcandan           #+#    #+#             */
-/*   Updated: 2024/12/09 14:53:16 by dcandan          ###   ########.fr       */
+/*   Updated: 2024/12/11 13:00:07 by dcandan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,10 +17,12 @@
 # include <iostream>
 # include <array>
 # include <iterator>
+# include <vector>
+# include "vector_struct.hpp"
 
 struct Matrix {
     private:
-        float *vect;
+        std::vector<std::vector<float>> matrix;
         int vect_size;
         Matrix();
 
@@ -28,18 +30,18 @@ struct Matrix {
     
     public:
     
-        Matrix(float *vect, int size);
+        Matrix(std::vector<std::vector<float>> matrix);
         Matrix(const Matrix & src);
         ~Matrix();
 
         Matrix &operator=(Matrix const & rhs);
 
-        float   *getVect();
-        int     is_square();
-        int     size();
-        void    display();
+        std::vector<std::vector<float>>     getVect();
+        int                                 is_square();
+        int                                 size();
+        void                                display();
 
-        Vector  reshape();
+        Vector                              reshape();
 };
 
 #endif

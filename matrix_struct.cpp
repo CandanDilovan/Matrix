@@ -6,12 +6,12 @@
 /*   By: dcandan <dcandan@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/09 14:45:08 by dcandan           #+#    #+#             */
-/*   Updated: 2024/12/09 15:10:39 by dcandan          ###   ########.fr       */
+/*   Updated: 2024/12/11 12:58:38 by dcandan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "matrix_struct.hpp"
 
-Matrix::Matrix(float **matrix, int nb_column, int nb_list){
+Matrix::Matrix(std::vector<std::vector<float>> matrix){
     
 }

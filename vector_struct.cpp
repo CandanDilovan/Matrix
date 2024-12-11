@@ -1,18 +1,17 @@
 #include "vector_struct.hpp"
 
-Vector::Vector(float *vect, int size)
+Vector::Vector(std::vector<float> vect)
 {
-    if (vect)
+    if (!vect.empty())
     {
-        this->vect_size = size / sizeof(vect[0]);
-        this->vect = new float[this->vect_size];
+        this->vect_size = vect.size();
         for (int a = 0; a < this->vect_size; a++)
-            this->vect[a] = vect[a];
+            this->vect.push_back(vect[a]);
     }
 }
 Vector::~Vector()
 {
-    delete [] this->vect;
+
 }
 
 Vector::Vector(const Vector & src)
@@ -46,7 +45,7 @@ void Vector::display()
     std::cout << "[" << array << "]" << std::endl;
 }
 
-float *Vector::getVect()
+std::vector<float> Vector::getVect()
 {
     return (this->vect);
 }

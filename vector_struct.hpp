@@ -6,7 +6,7 @@
 /*   By: dcandan <dcandan@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/27 13:43:16 by dcandan           #+#    #+#             */
-/*   Updated: 2024/11/28 15:24:54 by dcandan          ###   ########.fr       */
+/*   Updated: 2024/12/11 12:55:05 by dcandan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,10 +17,11 @@
 # include <iostream>
 # include <array>
 # include <iterator>
+# include <vector>
 
 struct Vector {
     private:
-        float *vect;
+        std::vector<float> vect;
         int vect_size;
         Vector();
 
@@ -28,15 +29,15 @@ struct Vector {
     
     public:
     
-        Vector(float *vect, int size);
+        Vector(std::vector<float> vect);
         Vector(const Vector & src);
         ~Vector();
 
         Vector &operator=(Vector const & rhs);
 
-        float   *getVect();
-        int     size();
-        void    display();
+        std::vector<float>      getVect();
+        int                     size();
+        void                    display();
 };
 
 #endif
