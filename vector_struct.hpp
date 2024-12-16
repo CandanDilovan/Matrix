@@ -6,7 +6,7 @@
 /*   By: dcandan <dcandan@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/27 13:43:16 by dcandan           #+#    #+#             */
-/*   Updated: 2024/12/16 15:03:39 by dcandan          ###   ########.fr       */
+/*   Updated: 2024/12/16 16:20:05 by dcandan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,6 @@ struct Vector {
         std::vector<float> vect;
         int vect_size;
         Vector();
-
-        std::string remove_zero(std::string number);
     
     public:
     
@@ -39,6 +37,17 @@ struct Vector {
         void                    display();
 
         Matrix                  reshape(unsigned long width);
+
+        void                  add(Vector &added);
+        void                  sub(Vector &subbed);
+        void                  scl(float multiplier);
+
+        class UnevenSize : public std::exception
+        {
+            public : 
+                virtual const char* what() const throw();
+        };
+
 };
 
 #endif

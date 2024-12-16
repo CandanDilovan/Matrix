@@ -32,17 +32,16 @@ int Vector::size()
 
 void Vector::display()
 {
-    std::string array;
     int vect_size = this->size();
 
+    std::cout << "[";
     for (int a = 0; a < vect_size; a++)
     {
-        std::string number = std::to_string(this->vect[a]);
-        array += this->remove_zero(number);
+        std::cout << this->vect[a];
         if (a + 1 != vect_size)
-            array += ", ";
+            std::cout << ", ";
     }
-    std::cout << "[" << array << "]" << std::endl;
+    std::cout << "]" << std::endl;
 }
 
 std::vector<float> Vector::getVect()
@@ -50,14 +49,6 @@ std::vector<float> Vector::getVect()
     return (this->vect);
 }
 
-
-
-std::string Vector::remove_zero(std::string number)
-{
-    while (number.find_last_of('0') == number.size() - 1 || number.back() == '.')
-        number.pop_back();
-    return (number);
-}
 
 
 Matrix Vector::reshape(unsigned long width)
@@ -78,4 +69,42 @@ Matrix Vector::reshape(unsigned long width)
         new_matrix.push_back(mini_vect);
 
     return (Matrix(new_matrix));
+}
+
+
+void Vector::add(Vector &added)
+{
+    std::vector<float> added_vect;
+
+    if (this->size() != added.size())
+        throw UnevenSize();
+    for (int a = 0; a < vect_size; a++)
+        added_vect.push_back(this->vect[a] + added.vect[a]);
+    this->vect = added_vect;
+}
+
+void Vector::sub(Vector &subbed)
+{
+    std::vector<float> subbed_vect;
+
+    if (this->size() != subbed.size())
+        throw UnevenSize();
+    for (int a = 0; a < vect_size; a++)
+        subbed_vect.push_back(this->vect[a] - subbed.vect[a]);
+    this->vect = subbed_vect;
+}
+
+void Vector::scl(float multiplier)
+{
+    std::vector<float> scl_vect;
+
+    for (int a = 0; a < this->vect_size; a++)
+        scl_vect.push_back(this->vect[a] * multiplier);
+    this->vect = scl_vect;
+}
+
+
+const char* Vector::UnevenSize::what() const throw()
+{
+    return ("Error: Vector are not the same size");
 }
