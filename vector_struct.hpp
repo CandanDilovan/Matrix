@@ -6,18 +6,17 @@
 /*   By: dcandan <dcandan@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/27 13:43:16 by dcandan           #+#    #+#             */
-/*   Updated: 2024/12/11 12:55:05 by dcandan          ###   ########.fr       */
+/*   Updated: 2024/12/16 15:03:39 by dcandan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef VECTOR_STRUCT_HPP
 # define VECTOR_STRUCT_HPP
 
-# include <string>
-# include <iostream>
-# include <array>
-# include <iterator>
-# include <vector>
+
+#include "all_include.hpp"
+
+struct Matrix;
 
 struct Vector {
     private:
@@ -38,6 +37,8 @@ struct Vector {
         std::vector<float>      getVect();
         int                     size();
         void                    display();
+
+        Matrix                  reshape(unsigned long width);
 };
 
 #endif

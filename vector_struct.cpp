@@ -58,3 +58,24 @@ std::string Vector::remove_zero(std::string number)
         number.pop_back();
     return (number);
 }
+
+
+Matrix Vector::reshape(unsigned long width)
+{
+    std::vector<std::vector<float>> new_matrix;
+    std::vector<float> mini_vect;
+
+    for (std::vector<float>::iterator it = this->vect.begin(); it < this->vect.end(); it++)
+    {
+        mini_vect.push_back(*it);
+        if (mini_vect.size() == width)
+        {
+            new_matrix.push_back(mini_vect);
+            mini_vect.clear();
+        }
+    }
+    if (mini_vect.size())
+        new_matrix.push_back(mini_vect);
+
+    return (Matrix(new_matrix));
+}

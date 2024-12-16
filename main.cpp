@@ -6,19 +6,29 @@
 /*   By: dcandan <dcandan@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/27 14:00:07 by dcandan           #+#    #+#             */
-/*   Updated: 2024/12/11 12:55:17 by dcandan          ###   ########.fr       */
+/*   Updated: 2024/12/16 15:14:42 by dcandan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "vector_struct.hpp"
+#include "all_include.hpp"
 #include "iostream"
 
 int main()
-{
-    std::vector<float> yes = {15.0, 2.3123, 4.0, 5.5, 12.1230, 1651.0, 21651.0};
-    
-    Vector oui(yes);
-    std::cout << "size: " << oui.size() << std::endl;
+{   
+    Matrix oui({
+        {10, 10.5, 10.51654},
+        {10, 10.5, 10.51654},
+        {10, 10.5, 10.51654},
+        {10, 10.5},
+
+    });
+
+    Vector new_vect = oui.reshape();
+    Matrix new_matrix = new_vect.reshape(3);
+    new_vect.display();
+    new_matrix.display();
+    oui.is_square();
+    oui.shape();
     oui.display();
     return (0);
 }

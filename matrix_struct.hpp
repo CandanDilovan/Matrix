@@ -6,19 +6,16 @@
 /*   By: dcandan <dcandan@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/27 13:43:12 by dcandan           #+#    #+#             */
-/*   Updated: 2024/12/11 13:00:07 by dcandan          ###   ########.fr       */
+/*   Updated: 2024/12/16 15:02:47 by dcandan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef MATRIX_STRUCT_HPP
 # define MATRIX_STRUCT_HPP
 
-# include <string>
-# include <iostream>
-# include <array>
-# include <iterator>
-# include <vector>
-# include "vector_struct.hpp"
+# include "all_include.hpp"
+
+struct Vector;
 
 struct Matrix {
     private:
@@ -36,9 +33,9 @@ struct Matrix {
 
         Matrix &operator=(Matrix const & rhs);
 
-        std::vector<std::vector<float>>     getVect();
+        std::vector<std::vector<float>>     getMatrix();
         int                                 is_square();
-        int                                 size();
+        std::vector<unsigned long>          shape();
         void                                display();
 
         Vector                              reshape();
