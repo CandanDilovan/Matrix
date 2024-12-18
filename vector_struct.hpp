@@ -6,7 +6,7 @@
 /*   By: dcandan <dcandan@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/27 13:43:16 by dcandan           #+#    #+#             */
-/*   Updated: 2024/12/16 16:20:05 by dcandan          ###   ########.fr       */
+/*   Updated: 2024/12/18 15:27:45 by dcandan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,12 +42,7 @@ struct Vector {
         void                  sub(Vector &subbed);
         void                  scl(float multiplier);
 
-        class UnevenSize : public std::exception
-        {
-            public : 
-                virtual const char* what() const throw();
-        };
-
+        Vector                linear_combination();
 };
 
 #endif

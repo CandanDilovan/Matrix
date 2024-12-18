@@ -6,7 +6,7 @@
 /*   By: dcandan <dcandan@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/27 13:43:12 by dcandan           #+#    #+#             */
-/*   Updated: 2024/12/16 15:02:47 by dcandan          ###   ########.fr       */
+/*   Updated: 2024/12/18 14:57:42 by dcandan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,8 @@ struct Matrix {
         int vect_size;
         Matrix();
 
-        std::string remove_zero(std::string number);
-    
+        void MatrixError(Matrix &check);
+
     public:
     
         Matrix(std::vector<std::vector<float>> matrix);
@@ -38,7 +38,12 @@ struct Matrix {
         std::vector<unsigned long>          shape();
         void                                display();
 
+        void                                add(Matrix &added);
+        void                                sub(Matrix &subbed);
+        void                                scl(float multiplier);
+
         Vector                              reshape();
+
 };
 
 #endif

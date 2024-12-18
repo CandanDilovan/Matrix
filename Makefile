@@ -6,12 +6,12 @@
 #    By: dcandan <dcandan@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/11/27 12:55:45 by dcandan           #+#    #+#              #
-#    Updated: 2024/12/16 13:09:11 by dcandan          ###   ########.fr        #
+#    Updated: 2024/12/18 15:28:35 by dcandan          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = matrix
-SOURCES = main.cpp vector_struct.cpp matrix_struct.cpp
+SOURCES = main.cpp vector_struct.cpp matrix_struct.cpp linear_combination.cpp
 			
 OBJECTS = $(SOURCES:.cpp=.o)
 

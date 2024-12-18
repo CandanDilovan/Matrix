@@ -21,7 +21,10 @@ Vector::Vector(const Vector & src)
 Vector & Vector::operator=(Vector const & rhs)
 {
     if (this != &rhs)
-        return (*this);
+    {
+        this->vect = rhs.vect;
+        this->vect_size = rhs.vect_size;
+    }
     return (*this);
 }
 
@@ -77,7 +80,7 @@ void Vector::add(Vector &added)
     std::vector<float> added_vect;
 
     if (this->size() != added.size())
-        throw UnevenSize();
+        throw SizeError();
     for (int a = 0; a < vect_size; a++)
         added_vect.push_back(this->vect[a] + added.vect[a]);
     this->vect = added_vect;
@@ -88,7 +91,7 @@ void Vector::sub(Vector &subbed)
     std::vector<float> subbed_vect;
 
     if (this->size() != subbed.size())
-        throw UnevenSize();
+        throw SizeError();
     for (int a = 0; a < vect_size; a++)
         subbed_vect.push_back(this->vect[a] - subbed.vect[a]);
     this->vect = subbed_vect;
@@ -101,10 +104,4 @@ void Vector::scl(float multiplier)
     for (int a = 0; a < this->vect_size; a++)
         scl_vect.push_back(this->vect[a] * multiplier);
     this->vect = scl_vect;
-}
-
-
-const char* Vector::UnevenSize::what() const throw()
-{
-    return ("Error: Vector are not the same size");
 }

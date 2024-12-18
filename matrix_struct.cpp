@@ -6,7 +6,7 @@
 /*   By: dcandan <dcandan@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/09 14:45:08 by dcandan           #+#    #+#             */
-/*   Updated: 2024/12/16 15:56:33 by dcandan          ###   ########.fr       */
+/*   Updated: 2024/12/18 14:57:55 by dcandan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,4 +101,49 @@ Vector Matrix::reshape()
         }
     }
     return (Vector(new_vect));
+}
+
+void Matrix::scl(float multiplier)
+{
+
+    for (unsigned long a = 0; a < this->matrix.size(); a++)
+    {
+        for (unsigned long b = 0; b < this->matrix[a].size(); b++)
+            this->matrix[a][b] *= multiplier;
+    }
+}
+
+void Matrix::sub(Matrix &subbed)
+{
+
+    MatrixError(subbed);
+
+    for (unsigned long a = 0; a < this->matrix.size(); a++)
+    {
+        for (unsigned long b = 0; b < this->matrix[a].size(); b++)
+            this->matrix[a][b] -= subbed.matrix[a][b];
+    }
+}
+
+void Matrix::add(Matrix &added)
+{
+
+    MatrixError(added);
+
+    for (unsigned long a = 0; a < this->matrix.size(); a++)
+    {
+        for (unsigned long b = 0; b < this->matrix[a].size(); b++)
+            this->matrix[a][b] += added.matrix[a][b];
+    }
+}
+
+void Matrix::MatrixError(Matrix &check)
+{
+    if (this->matrix.size() != check.matrix.size())
+        throw SizeError();
+    for (unsigned long a = 0; a < this->matrix.size(); a++)
+    {
+        if (this->matrix[a].size() != check.matrix[a].size())
+            throw SizeError();
+    }
 }
