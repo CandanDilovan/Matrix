@@ -6,7 +6,7 @@
 /*   By: dcandan <dcandan@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/27 13:43:12 by dcandan           #+#    #+#             */
-/*   Updated: 2024/12/18 14:57:42 by dcandan          ###   ########.fr       */
+/*   Updated: 2024/12/19 16:47:41 by dcandan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,6 @@ struct Vector;
 struct Matrix {
     private:
         std::vector<std::vector<float>> matrix;
-        int vect_size;
         Matrix();
 
         void MatrixError(Matrix &check);
@@ -32,6 +31,9 @@ struct Matrix {
         ~Matrix();
 
         Matrix &operator=(Matrix const & rhs);
+        Matrix &operator+(Matrix & rhs);
+        Matrix &operator-(Matrix & rhs);
+        Matrix &operator*(float rhs);
 
         std::vector<std::vector<float>>     getMatrix();
         int                                 is_square();

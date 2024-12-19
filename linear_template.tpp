@@ -1,35 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   error.hpp                                          :+:      :+:    :+:   */
+/*   linear_template.tpp                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dcandan <dcandan@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/18 14:52:06 by dcandan           #+#    #+#             */
-/*   Updated: 2024/12/19 16:07:00 by dcandan          ###   ########.fr       */
+/*   Created: 2024/12/19 16:17:17 by dcandan           #+#    #+#             */
+/*   Updated: 2024/12/19 16:44:58 by dcandan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef ERROR_HPP
-# define ERROR_HPP
-
 #include "all_include.hpp"
 
-class SizeError : public std::exception
+template<typename T>
+T linear_interpolation(T u, T v, float t)
 {
-    public : 
-        virtual const char* what() const throw(){
-            return ("Error: not the same size");
-        }
-};
+    if (typeid(u) != typeid(v))
+        throw NotSameType();
+    
+    T result = (v - u) * t + u;
 
-class NotSameType : public std::exception
-{
-    public : 
-        virtual const char* what() const throw(){
-            return ("Error: Template have unmatching type");
-        }
-};
-
-
-#endif
+    return (result);
+}

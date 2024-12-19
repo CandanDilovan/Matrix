@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   linear_combination.cpp                             :+:      :+:    :+:   */
+/*   linear_calculus.cpp                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dcandan <dcandan@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/18 14:45:59 by dcandan           #+#    #+#             */
-/*   Updated: 2024/12/18 15:47:13 by dcandan          ###   ########.fr       */
+/*   Updated: 2024/12/19 16:37:48 by dcandan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,3 +24,4 @@ Vector  linear_combination(std::vector<Vector> vector_lst, std::vector<float> co
         temp[0].add(temp[a]);
     return (temp[0]);
 }
+

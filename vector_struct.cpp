@@ -18,15 +18,6 @@ Vector::Vector(const Vector & src)
 {
     *this = src;
 }
-Vector & Vector::operator=(Vector const & rhs)
-{
-    if (this != &rhs)
-    {
-        this->vect = rhs.vect;
-        this->vect_size = rhs.vect_size;
-    }
-    return (*this);
-}
 
 int Vector::size()
 {
@@ -104,4 +95,57 @@ void Vector::scl(float multiplier)
     for (int a = 0; a < this->vect_size; a++)
         scl_vect.push_back(this->vect[a] * multiplier);
     this->vect = scl_vect;
+}
+
+float   Vector::dot(Vector &dotproduct)
+{
+    float result = 0;
+    Vector multiplied((*this) * dotproduct);
+    for (std::vector<float>::iterator it = multiplied.vect.begin(); it < multiplied.vect.end(); it++)
+        result += (*it);
+    return (result);
+}
+
+
+//surcharge
+
+std::vector<float> & Vector::operator*(Vector & rhs)
+{
+
+    std::vector<float> added_vect;
+
+    if (this->size() != rhs.size())
+        throw SizeError();
+    for (int a = 0; a < vect_size; a++)
+        added_vect.push_back(this->vect[a] * rhs.vect[a]);
+    return (added_vect);
+}
+
+
+Vector & Vector::operator+(Vector & rhs)
+{
+    this->add(rhs);
+    return (*this);
+}
+
+Vector & Vector::operator-(Vector & rhs)
+{
+    this->sub(rhs);
+    return (*this);
+}
+
+Vector & Vector::operator*(float rhs)
+{
+    this->scl(rhs);
+    return (*this);
+}
+
+Vector & Vector::operator=(Vector const & rhs)
+{
+    if (this != &rhs)
+    {
+        this->vect = rhs.vect;
+        this->vect_size = rhs.vect_size;
+    }
+    return (*this);
 }

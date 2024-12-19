@@ -6,7 +6,7 @@
 /*   By: dcandan <dcandan@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/09 14:45:08 by dcandan           #+#    #+#             */
-/*   Updated: 2024/12/18 14:57:55 by dcandan          ###   ########.fr       */
+/*   Updated: 2024/12/19 16:49:29 by dcandan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,12 +25,7 @@ Matrix::Matrix(const Matrix & src)
 {
     *this = src;
 }
-Matrix & Matrix::operator=(Matrix const & rhs)
-{
-    if (this != &rhs)
-        return (*this);
-    return (*this);
-}
+
 
 std::vector<std::vector<float>> Matrix::getMatrix()
 {
@@ -146,4 +141,33 @@ void Matrix::MatrixError(Matrix &check)
         if (this->matrix[a].size() != check.matrix[a].size())
             throw SizeError();
     }
+}
+
+//surcharge
+
+Matrix & Matrix::operator+(Matrix & rhs)
+{
+    this->add(rhs);
+    return (*this);
+}
+
+Matrix & Matrix::operator-(Matrix & rhs)
+{
+    this->sub(rhs);
+    return (*this);
+}
+
+Matrix & Matrix::operator*(float rhs)
+{
+    this->scl(rhs);
+    return (*this);
+}
+
+Matrix & Matrix::operator=(Matrix const & rhs)
+{
+    if (this != &rhs)
+    {
+        this->matrix = rhs.matrix;
+    }
+    return (*this);
 }

@@ -13,4 +13,7 @@
 
 Vector  linear_combination(std::vector<Vector> vector_lst, std::vector<float> coefs);
 
+
+#include "linear_template.tpp"
+
 #endif

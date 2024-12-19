@@ -6,7 +6,7 @@
 /*   By: dcandan <dcandan@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/27 14:00:07 by dcandan           #+#    #+#             */
-/*   Updated: 2024/12/18 15:49:37 by dcandan          ###   ########.fr       */
+/*   Updated: 2024/12/19 17:33:41 by dcandan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,23 +72,46 @@ int main()
         //ex01
         //----------------------------------------------------------------------------
 
-        Vector one({1, 0, 0});
-        Vector two({0, 1, 0});
-        Vector three({0, 0, 1});
+        // Vector one({1, 0, 0});
+        // Vector two({0, 1, 0});
+        // Vector three({0, 0, 1});
 
 
 
-        Vector lc = linear_combination({one, two, three}, {10, -2, 0.5});
-        lc.display();
+        // Vector lc = linear_combination({one, two, three}, {10, -2, 0.5});
+        // lc.display();
 
 
-        Vector oneone({1, 2, 3});
-        Vector twotwo({0, 10, -100});
+        // Vector oneone({1, 2, 3});
+        // Vector twotwo({0, 10, -100});
 
 
+        // Vector lc = linear_combination({oneone, twotwo}, {10, -2});
+        // lc.display();
 
-        Vector lc = linear_combination({oneone, twotwo}, {10, -2});
-        lc.display();
+        //ex02
+        //----------------------------------------------------------------------------
+
+        // Vector v1 = Vector({2., 1.});
+        // Vector v2 = Vector({4., 2.});
+
+        // Vector test = linear_interpolation(v1, v2, 0.3);
+        // test.display();
+
+        // Matrix m1({{2., 1.}, {3., 4.}});
+        // Matrix m2({{20., 10.}, {30., 40.}});
+        
+        // Matrix testm = linear_interpolation(m1, m2, 0.5);
+        // testm.display();
+
+        //ex03
+        //----------------------------------------------------------------------------
+
+        Vector v1({-1, 6});
+        Vector v2({3, 2});
+
+        std::cout << v1.dot(v2) << std::endl;
+        v1.display();
 
     }
     catch (const std::exception &e)
