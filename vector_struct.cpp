@@ -19,7 +19,7 @@ Vector::Vector(const Vector & src)
     *this = src;
 }
 
-int Vector::size()
+int Vector::size() const
 {
     return (this->vect_size);
 }
@@ -109,7 +109,7 @@ float   Vector::dot(Vector &dotproduct)
 
 //surcharge
 
-std::vector<float> & Vector::operator*(Vector & rhs)
+Vector Vector::operator*(Vector & rhs) const
 {
 
     std::vector<float> added_vect;
@@ -118,26 +118,29 @@ std::vector<float> & Vector::operator*(Vector & rhs)
         throw SizeError();
     for (int a = 0; a < vect_size; a++)
         added_vect.push_back(this->vect[a] * rhs.vect[a]);
-    return (added_vect);
+    Vector tmp(added_vect);
+    return (tmp);
 }
 
-
-Vector & Vector::operator+(Vector & rhs)
+Vector Vector::operator+(Vector & rhs) const
 {
-    this->add(rhs);
-    return (*this);
+    Vector tmp(*this);
+    tmp.add(rhs);
+    return (tmp);
 }
 
-Vector & Vector::operator-(Vector & rhs)
+Vector Vector::operator-(Vector & rhs) const
 {
-    this->sub(rhs);
-    return (*this);
+    Vector tmp(*this);
+    tmp.sub(rhs);
+    return (tmp);
 }
 
-Vector & Vector::operator*(float rhs)
+Vector Vector::operator*(float rhs) const
 {
-    this->scl(rhs);
-    return (*this);
+    Vector tmp(*this);
+    tmp.scl(rhs);
+    return (tmp);
 }
 
 Vector & Vector::operator=(Vector const & rhs)

@@ -6,7 +6,7 @@
 /*   By: dcandan <dcandan@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/27 14:00:07 by dcandan           #+#    #+#             */
-/*   Updated: 2024/12/19 17:33:41 by dcandan          ###   ########.fr       */
+/*   Updated: 2025/01/06 15:06:15 by dcandan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,6 +110,9 @@ int main()
         Vector v1({-1, 6});
         Vector v2({3, 2});
 
+        // Vector v3 = v1 + v2;
+
+        // v1.display();
         std::cout << v1.dot(v2) << std::endl;
         v1.display();
 

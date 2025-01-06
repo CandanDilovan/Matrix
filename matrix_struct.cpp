@@ -6,7 +6,7 @@
 /*   By: dcandan <dcandan@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/09 14:45:08 by dcandan           #+#    #+#             */
-/*   Updated: 2024/12/19 16:49:29 by dcandan          ###   ########.fr       */
+/*   Updated: 2025/01/06 14:56:53 by dcandan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -145,22 +145,25 @@ void Matrix::MatrixError(Matrix &check)
 
 //surcharge
 
-Matrix & Matrix::operator+(Matrix & rhs)
+Matrix Matrix::operator+(Matrix & rhs) const
 {
-    this->add(rhs);
-    return (*this);
+    Matrix tmp(*this);
+    tmp.add(rhs);
+    return (tmp);
 }
 
-Matrix & Matrix::operator-(Matrix & rhs)
+Matrix Matrix::operator-(Matrix & rhs) const
 {
-    this->sub(rhs);
-    return (*this);
+    Matrix tmp(*this);
+    tmp.sub(rhs);
+    return (tmp);
 }
 
-Matrix & Matrix::operator*(float rhs)
+Matrix Matrix::operator*(float rhs) const
 {
-    this->scl(rhs);
-    return (*this);
+    Matrix tmp(*this);
+    tmp.scl(rhs);
+    return (tmp);
 }
 
 Matrix & Matrix::operator=(Matrix const & rhs)

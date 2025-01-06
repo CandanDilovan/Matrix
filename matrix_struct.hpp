@@ -6,7 +6,7 @@
 /*   By: dcandan <dcandan@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/27 13:43:12 by dcandan           #+#    #+#             */
-/*   Updated: 2024/12/19 16:47:41 by dcandan          ###   ########.fr       */
+/*   Updated: 2025/01/06 14:54:43 by dcandan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,9 +31,9 @@ struct Matrix {
         ~Matrix();
 
         Matrix &operator=(Matrix const & rhs);
-        Matrix &operator+(Matrix & rhs);
-        Matrix &operator-(Matrix & rhs);
-        Matrix &operator*(float rhs);
+        Matrix operator+(Matrix & rhs) const;
+        Matrix operator-(Matrix & rhs) const;
+        Matrix operator*(float rhs) const;
 
         std::vector<std::vector<float>>     getMatrix();
         int                                 is_square();

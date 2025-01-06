@@ -6,7 +6,7 @@
 /*   By: dcandan <dcandan@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/27 13:43:16 by dcandan           #+#    #+#             */
-/*   Updated: 2024/12/19 17:40:14 by dcandan          ###   ########.fr       */
+/*   Updated: 2025/01/06 14:56:46 by dcandan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,13 +31,13 @@ struct Vector {
         ~Vector();
 
         Vector &operator=(Vector const & rhs);
-        Vector &operator+(Vector & rhs);
-        Vector &operator-(Vector & rhs);
-        Vector &operator*(Vector & rhs);
-        Vector &operator*(float rhs);
+        Vector operator+(Vector & rhs) const;
+        Vector operator-(Vector & rhs) const;
+        Vector operator*(Vector & rhs) const;
+        Vector operator*(float rhs) const;
 
         std::vector<float>      getVect();
-        int                     size();
+        int                     size() const;
         void                    display();
 
         Matrix                  reshape(unsigned long width);
