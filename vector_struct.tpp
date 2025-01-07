@@ -1,6 +1,7 @@
 #include "vector_struct.hpp"
 
-Vector::Vector(std::vector<float> vect)
+template<typename T>
+Vector<T>::Vector(std::vector<T> vect)
 {
     if (!vect.empty())
     {
@@ -9,22 +10,24 @@ Vector::Vector(std::vector<float> vect)
             this->vect.push_back(vect[a]);
     }
 }
-Vector::~Vector()
+template<typename T>
+Vector<T>::~Vector()
 {
 
 }
-
-Vector::Vector(const Vector & src)
+template<typename T>
+Vector<T>::Vector(const Vector & src)
 {
     *this = src;
 }
-
-int Vector::size() const
+template<typename T>
+int Vector<T>::size() const
 {
     return (this->vect_size);
 }
 
-void Vector::display()
+template<typename T>
+void Vector<T>::display()
 {
     int vect_size = this->size();
 
@@ -38,19 +41,20 @@ void Vector::display()
     std::cout << "]" << std::endl;
 }
 
-std::vector<float> Vector::getVect()
+template<typename T>
+std::vector<T> Vector<T>::getVect()
 {
     return (this->vect);
 }
 
 
-
-Matrix Vector::reshape(unsigned long width)
+template<typename T>
+Matrix<T> Vector<T>::reshape(unsigned long width)
 {
-    std::vector<std::vector<float>> new_matrix;
-    std::vector<float> mini_vect;
+    std::vector<std::vector<T>> new_matrix;
+    std::vector<T> mini_vect;
 
-    for (std::vector<float>::iterator it = this->vect.begin(); it < this->vect.end(); it++)
+    for (typename std::vector<T>::iterator it = this->vect.begin(); it < this->vect.end(); it++)
     {
         mini_vect.push_back(*it);
         if (mini_vect.size() == width)
@@ -62,13 +66,14 @@ Matrix Vector::reshape(unsigned long width)
     if (mini_vect.size())
         new_matrix.push_back(mini_vect);
 
-    return (Matrix(new_matrix));
+    return (Matrix<T>(new_matrix));
 }
 
 
-void Vector::add(Vector &added)
+template<typename T>
+void Vector<T>::add(Vector &added)
 {
-    std::vector<float> added_vect;
+    std::vector<T> added_vect;
 
     if (this->size() != added.size())
         throw SizeError();
@@ -77,9 +82,10 @@ void Vector::add(Vector &added)
     this->vect = added_vect;
 }
 
-void Vector::sub(Vector &subbed)
+template<typename T>
+void Vector<T>::sub(Vector &subbed)
 {
-    std::vector<float> subbed_vect;
+    std::vector<T> subbed_vect;
 
     if (this->size() != subbed.size())
         throw SizeError();
@@ -88,31 +94,45 @@ void Vector::sub(Vector &subbed)
     this->vect = subbed_vect;
 }
 
-void Vector::scl(float multiplier)
+template<typename T>
+void Vector<T>::scl(float multiplier)
 {
-    std::vector<float> scl_vect;
+    std::vector<T> scl_vect;
 
     for (int a = 0; a < this->vect_size; a++)
         scl_vect.push_back(this->vect[a] * multiplier);
     this->vect = scl_vect;
 }
 
-float   Vector::dot(Vector &dotproduct)
+template<typename T>
+float   Vector<T>::dot(Vector &dotproduct)
 {
     float result = 0;
     Vector multiplied((*this) * dotproduct);
-    for (std::vector<float>::iterator it = multiplied.vect.begin(); it < multiplied.vect.end(); it++)
+    for (typename std::vector<T>::iterator it = multiplied.vect.begin(); it < multiplied.vect.end(); it++)
         result += (*it);
     return (result);
+}
+
+template<typename T>
+float                   Vector<T>::norm_1()
+{
+    float norm = 0;
+    
+    for (typename std::vector<T>::iterator it = vect.begin(); it < vect.end(); it++)
+        norm += std::abs(*it);
+    std::cout << norm << std::endl;
+    return (norm);
 }
 
 
 //surcharge
 
-Vector Vector::operator*(Vector & rhs) const
+template<typename T>
+Vector<T> Vector<T>::operator*(Vector & rhs) const
 {
 
-    std::vector<float> added_vect;
+    std::vector<T> added_vect;
 
     if (this->size() != rhs.size())
         throw SizeError();
@@ -122,28 +142,32 @@ Vector Vector::operator*(Vector & rhs) const
     return (tmp);
 }
 
-Vector Vector::operator+(Vector & rhs) const
+template<typename T>
+Vector<T> Vector<T>::operator+(Vector & rhs) const
 {
     Vector tmp(*this);
     tmp.add(rhs);
     return (tmp);
 }
 
-Vector Vector::operator-(Vector & rhs) const
+template<typename T>
+Vector<T> Vector<T>::operator-(Vector & rhs) const
 {
     Vector tmp(*this);
     tmp.sub(rhs);
     return (tmp);
 }
 
-Vector Vector::operator*(float rhs) const
+template<typename T>
+Vector<T> Vector<T>::operator*(float rhs) const
 {
     Vector tmp(*this);
     tmp.scl(rhs);
     return (tmp);
 }
 
-Vector & Vector::operator=(Vector const & rhs)
+template<typename T>
+Vector<T> & Vector<T>::operator=(Vector const & rhs)
 {
     if (this != &rhs)
     {

@@ -6,7 +6,7 @@
 /*   By: dcandan <dcandan@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/27 13:43:16 by dcandan           #+#    #+#             */
-/*   Updated: 2025/01/06 14:56:46 by dcandan          ###   ########.fr       */
+/*   Updated: 2025/01/07 17:39:02 by dcandan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,41 +15,51 @@
 
 
 #include "all_include.hpp"
+#include "matrix_struct.hpp"
 
+
+template <typename T>
 struct Matrix;
 
+template<typename T>
 struct Vector {
     private:
-        std::vector<float> vect;
+        std::vector<T> vect;
         int vect_size;
-        Vector();
+        Vector<T>();
     
     public:
     
-        Vector(std::vector<float> vect);
-        Vector(const Vector & src);
+        Vector(std::vector<T> vect);
+        Vector(const Vector<T> & src);
         ~Vector();
 
-        Vector &operator=(Vector const & rhs);
-        Vector operator+(Vector & rhs) const;
-        Vector operator-(Vector & rhs) const;
-        Vector operator*(Vector & rhs) const;
-        Vector operator*(float rhs) const;
+        Vector<T> &operator=(Vector<T> const & rhs);
+        Vector<T> operator+(Vector<T> & rhs) const;
+        Vector<T> operator-(Vector<T> & rhs) const;
+        Vector<T> operator*(Vector<T> & rhs) const;
+        Vector<T> operator*(float rhs) const;
 
-        std::vector<float>      getVect();
+        std::vector<T>          getVect();
         int                     size() const;
         void                    display();
 
-        Matrix                  reshape(unsigned long width);
+        Matrix<T>                  reshape(unsigned long width);
 
-        void                  add(Vector &added);
-        void                  sub(Vector &subbed);
+        void                  add(Vector<T> &added);
+        void                  sub(Vector<T> &subbed);
         void                  scl(float multiplier);
 
-        float                 dot(Vector &dotproduct);
+        float                 dot(Vector<T> &dotproduct);
 
 
-        Vector                linear_combination();
+        float                   norm();
+        float                   norm_1();
+        float                   norm_inf();
+
+        Vector<T>                linear_combination();
 };
+
+# include "vector_struct.tpp"
 
 #endif

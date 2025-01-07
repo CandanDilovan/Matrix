@@ -1,42 +1,47 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   matrix_struct.cpp                                  :+:      :+:    :+:   */
+/*   matrix_struct.tpp                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dcandan <dcandan@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/09 14:45:08 by dcandan           #+#    #+#             */
-/*   Updated: 2025/01/06 14:56:53 by dcandan          ###   ########.fr       */
+/*   Updated: 2025/01/07 15:55:11 by dcandan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "matrix_struct.hpp"
 
-Matrix::Matrix(std::vector<std::vector<float>> matrix)
+template<typename T>
+Matrix<T>::Matrix(std::vector<std::vector<T>> matrix)
 {
     this->matrix = matrix;
 }
 
-Matrix::~Matrix()
+template<typename T>
+Matrix<T>::~Matrix()
 {
     
 }
-Matrix::Matrix(const Matrix & src)
+
+template<typename T>
+Matrix<T>::Matrix(const Matrix<T> & src)
 {
     *this = src;
 }
 
-
-std::vector<std::vector<float>> Matrix::getMatrix()
+template<typename T>
+std::vector<std::vector<T>> Matrix<T>::getMatrix()
 {
     return (this->matrix);
 }
 
-int Matrix::is_square()
+template<typename T>
+int Matrix<T>::is_square()
 {
     unsigned long tiananmen_square = matrix[0].size();
     
-    for(std::vector<std::vector<float>>::iterator it = this->matrix.begin(); it < this->matrix.end(); it++)
+    for(typename std::vector<std::vector<T>>::iterator it = this->matrix.begin(); it < this->matrix.end(); it++)
     {
         if ((*it).size() != tiananmen_square)
             return (1);
@@ -44,7 +49,8 @@ int Matrix::is_square()
     return(0);
 }
 
-std::vector<unsigned long> Matrix::shape()
+template<typename T>
+std::vector<unsigned long> Matrix<T>::shape()
 {
     if (this->is_square() == 0)
     {
@@ -53,7 +59,7 @@ std::vector<unsigned long> Matrix::shape()
         return (shaped);
     }
     unsigned long max = 0;
-    for(std::vector<std::vector<float>>::iterator it = this->matrix.begin(); it < this->matrix.end(); it++)
+    for(typename std::vector<std::vector<T>>::iterator it = this->matrix.begin(); it < this->matrix.end(); it++)
     {
         if ((*it).size() > max)
             max = (*it).size();
@@ -64,13 +70,14 @@ std::vector<unsigned long> Matrix::shape()
 
 }
 
-void    Matrix::display()
+template<typename T>
+void    Matrix<T>::display()
 {
-    for (std::vector<std::vector<float>>::iterator it = this->matrix.begin(); it < this->matrix.end(); it++)
+    for (typename std::vector<std::vector<T>>::iterator it = this->matrix.begin(); it < this->matrix.end(); it++)
     {
         if (it == this->matrix.begin())
             std::cout << "[";
-        for(std::vector<float>::iterator ite = (*it).begin(); ite < (*it).end(); ite++)
+        for(typename std::vector<T>::iterator ite = (*it).begin(); ite < (*it).end(); ite++)
         {
             if (ite == (*it).begin())
                 std::cout << "[";
@@ -84,21 +91,23 @@ void    Matrix::display()
     std::cout << "]]" << std::endl;
 }
 
-Vector Matrix::reshape()
+template<typename T>
+Vector<T> Matrix<T>::reshape()
 {
-    std::vector<float> new_vect;
+    std::vector<T> new_vect;
     
-    for (std::vector<std::vector<float>>::iterator it = this->matrix.begin(); it < this->matrix.end(); it++)
+    for (typename std::vector<std::vector<T>>::iterator it = this->matrix.begin(); it < this->matrix.end(); it++)
     {
-        for(std::vector<float>::iterator ite = (*it).begin(); ite < (*it).end(); ite++)
+        for(typename std::vector<T>::iterator ite = (*it).begin(); ite < (*it).end(); ite++)
         {
             new_vect.push_back((*ite));
         }
     }
-    return (Vector(new_vect));
+    return (Vector<T>(new_vect));
 }
 
-void Matrix::scl(float multiplier)
+template<typename T>
+void Matrix<T>::scl(float multiplier)
 {
 
     for (unsigned long a = 0; a < this->matrix.size(); a++)
@@ -108,7 +117,8 @@ void Matrix::scl(float multiplier)
     }
 }
 
-void Matrix::sub(Matrix &subbed)
+template<typename T>
+void Matrix<T>::sub(Matrix<T> &subbed)
 {
 
     MatrixError(subbed);
@@ -120,7 +130,8 @@ void Matrix::sub(Matrix &subbed)
     }
 }
 
-void Matrix::add(Matrix &added)
+template<typename T>
+void Matrix<T>::add(Matrix<T> &added)
 {
 
     MatrixError(added);
@@ -132,7 +143,8 @@ void Matrix::add(Matrix &added)
     }
 }
 
-void Matrix::MatrixError(Matrix &check)
+template<typename T>
+void Matrix<T>::MatrixError(Matrix<T> &check)
 {
     if (this->matrix.size() != check.matrix.size())
         throw SizeError();
@@ -145,28 +157,32 @@ void Matrix::MatrixError(Matrix &check)
 
 //surcharge
 
-Matrix Matrix::operator+(Matrix & rhs) const
+template<typename T>
+Matrix<T> Matrix<T>::operator+(Matrix & rhs) const
 {
     Matrix tmp(*this);
     tmp.add(rhs);
     return (tmp);
 }
 
-Matrix Matrix::operator-(Matrix & rhs) const
+template<typename T>
+Matrix<T> Matrix<T>::operator-(Matrix & rhs) const
 {
     Matrix tmp(*this);
     tmp.sub(rhs);
     return (tmp);
 }
 
-Matrix Matrix::operator*(float rhs) const
+template<typename T>
+Matrix<T> Matrix<T>::operator*(float rhs) const
 {
     Matrix tmp(*this);
     tmp.scl(rhs);
     return (tmp);
 }
 
-Matrix & Matrix::operator=(Matrix const & rhs)
+template<typename T>
+Matrix<T> & Matrix<T>::operator=(Matrix<T> const & rhs)
 {
     if (this != &rhs)
     {

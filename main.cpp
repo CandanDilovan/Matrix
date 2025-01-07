@@ -6,39 +6,27 @@
 /*   By: dcandan <dcandan@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/27 14:00:07 by dcandan           #+#    #+#             */
-/*   Updated: 2025/01/06 15:06:15 by dcandan          ###   ########.fr       */
+/*   Updated: 2025/01/07 17:38:36 by dcandan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "all_include.hpp"
 #include "iostream"
+#include "vector_struct.hpp"
+#include "matrix_struct.hpp"
+
 
 int main()
 {   
-    // Matrix oui({
-    //     {10, 10.5, 10.51654},
-    //     {10, 10.5, 10.51654},
-    //     {10, 10.5, 10.51654},
-    //     {10, 10.5},
-
-    // });
-
-    // Vector new_vect = oui.reshape();
-    // Matrix new_matrix = new_vect.reshape(3);
-    // new_vect.display();
-    // new_matrix.display();
-    // oui.is_square();
-    // oui.shape();
-    // oui.display();
     try{
         //ex00
         //----------------------------------------------------------------------------
         // std::vector<float> vect_1 = {1, 2, 3.5};
         // std::vector<float> vect_2 = {2.3, 4, 2.4};
 
-        // Vector vect1 = Vector(vect_1);
+        // Vector<float> vect1 = Vector<float>(vect_1);
         // vect1.display();
-        // Vector vect2 = Vector(vect_2);
+        // Vector<float> vect2 = Vector<float>(vect_2);
         // vect1.add(vect2);
         // vect1.display();
         // vect1.sub(vect2);
@@ -48,14 +36,14 @@ int main()
         // return (0);
 
         
-        // Matrix oui({
+        // Matrix<float> oui({
         // {10, 10.5, 10.51654},
         // {10, 10.5, 10.51654},
         // {10, 10.5, 10.51654},
         // {10, 10.5},
         // });
 
-        // Matrix non({
+        // Matrix<float> non({
         // {10, 10.5, 10.51654},
         // {10, 10.5, 10.51654},
         // {10, 10.5, 10.51654},
@@ -72,49 +60,54 @@ int main()
         //ex01
         //----------------------------------------------------------------------------
 
-        // Vector one({1, 0, 0});
-        // Vector two({0, 1, 0});
-        // Vector three({0, 0, 1});
+        // Vector<float> one({1, 0, 0});
+        // Vector<float> two({0, 1, 0});
+        // Vector<float> three({0, 0, 1});
 
 
 
-        // Vector lc = linear_combination({one, two, three}, {10, -2, 0.5});
+        // Vector<float> lc = linear_combination<float>({one, two, three}, {10, -2, 0.5});
         // lc.display();
 
 
-        // Vector oneone({1, 2, 3});
-        // Vector twotwo({0, 10, -100});
+        // Vector<float> oneone({1, 2, 3});
+        // Vector<float> twotwo({0, 10, -100});
 
 
-        // Vector lc = linear_combination({oneone, twotwo}, {10, -2});
-        // lc.display();
+        // Vector<float> lv = linear_combination<float>({oneone, twotwo}, {10, -2});
+        // lv.display();
 
         //ex02
         //----------------------------------------------------------------------------
 
-        // Vector v1 = Vector({2., 1.});
-        // Vector v2 = Vector({4., 2.});
+        // Vector<float> v1 = Vector<float>({2., 1.});
+        // Vector<float> v2 = Vector<float>({4., 2.});
 
-        // Vector test = linear_interpolation(v1, v2, 0.3);
+        // Vector<float> test = linear_interpolation(v1, v2, 0.3);
         // test.display();
 
-        // Matrix m1({{2., 1.}, {3., 4.}});
-        // Matrix m2({{20., 10.}, {30., 40.}});
+        // Matrix<float> m1({{2., 1.}, {3., 4.}});
+        // Matrix<float> m2({{20., 10.}, {30., 40.}});
         
-        // Matrix testm = linear_interpolation(m1, m2, 0.5);
+        // Matrix<float> testm = linear_interpolation(m1, m2, 0.5);
         // testm.display();
 
-        //ex03
+        // ex03
         //----------------------------------------------------------------------------
 
-        Vector v1({-1, 6});
-        Vector v2({3, 2});
 
-        // Vector v3 = v1 + v2;
+        // Vector<float> t1({2., 1.});
+        // Vector<float> t2({4, 2.});
 
-        // v1.display();
-        std::cout << v1.dot(v2) << std::endl;
-        v1.display();
+        // std::cout << t1.dot(t2) << std::endl;
+        // t1.display();
+
+        // ex04
+        //----------------------------------------------------------------------------
+
+        Vector<float> t1({2., 1., -4.});
+        t1.norm_1();
+  
 
     }
     catch (const std::exception &e)
