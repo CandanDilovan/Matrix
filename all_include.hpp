@@ -6,6 +6,7 @@
 # include <array>
 # include <iterator>
 # include <vector>
+# include <math.h>
 # include <list>
 # include "error.hpp"
 

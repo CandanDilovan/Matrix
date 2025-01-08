@@ -6,7 +6,7 @@
 /*   By: dcandan <dcandan@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/27 14:00:07 by dcandan           #+#    #+#             */
-/*   Updated: 2025/01/07 17:38:36 by dcandan          ###   ########.fr       */
+/*   Updated: 2025/01/08 14:36:26 by dcandan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,9 +105,12 @@ int main()
         // ex04
         //----------------------------------------------------------------------------
 
-        Vector<float> t1({2., 1., -4.});
-        t1.norm_1();
-  
+        Vector<float> t1({1., 2., 3.});
+        std::cout << t1.norm_1() << ', ' << t1.norm() << ", " << t1.norm_inf() << std::endl;
+
+
+        Vector<float> t2({-1., -2.});
+        std::cout << t2.norm_1() << ', ' << t2.norm() << ", " << t2.norm_inf() << std::endl;
 
     }
     catch (const std::exception &e)

@@ -121,7 +121,31 @@ float                   Vector<T>::norm_1()
     
     for (typename std::vector<T>::iterator it = vect.begin(); it < vect.end(); it++)
         norm += std::abs(*it);
-    std::cout << norm << std::endl;
+    return (norm);
+}
+
+template<typename T>
+float                   Vector<T>::norm_inf()
+{
+    std::vector<T> temp = this->vect;
+    float norm = 0;
+    
+    for (typename std::vector<T>::iterator it = temp.begin(); it < temp.end(); it++)
+    {
+        (*it) = std::abs(*it);
+        norm = std::max(norm, (*it));
+    }
+    return (norm);
+}
+
+template<typename T>
+float                   Vector<T>::norm()
+{
+    float norm = 0;
+    
+    for (typename std::vector<T>::iterator it = vect.begin(); it < vect.end(); it++)
+        norm += pow((*it), 2);
+    norm = sqrt(norm);
     return (norm);
 }
 
