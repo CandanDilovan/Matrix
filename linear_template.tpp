@@ -6,7 +6,7 @@
 /*   By: dcandan <dcandan@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/19 16:17:17 by dcandan           #+#    #+#             */
-/*   Updated: 2025/01/07 15:52:11 by dcandan          ###   ########.fr       */
+/*   Updated: 2025/01/09 16:42:08 by dcandan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,4 +37,12 @@ Vector<T>  linear_combination(std::vector<Vector<T>> vector_lst, std::vector<T> 
     for (unsigned long a = 1; a < vector_lst.size(); a++)
         temp[0].add(temp[a]);
     return (temp[0]);
+}
+
+template<typename T>
+float   consine(Vector<T> Vect_one, Vector<T> Vect_two)
+{
+    float result = Vect_one.dot(Vect_two) / (Vect_one.norm() * Vect_two.norm());
+    std::cout << result << std::endl;
+    return (result);
 }

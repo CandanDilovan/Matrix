@@ -6,7 +6,7 @@
 /*   By: dcandan <dcandan@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/27 14:00:07 by dcandan           #+#    #+#             */
-/*   Updated: 2025/01/08 14:36:26 by dcandan          ###   ########.fr       */
+/*   Updated: 2025/01/09 16:44:39 by dcandan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,13 +105,40 @@ int main()
         // ex04
         //----------------------------------------------------------------------------
 
-        Vector<float> t1({1., 2., 3.});
-        std::cout << t1.norm_1() << ', ' << t1.norm() << ", " << t1.norm_inf() << std::endl;
+        // Vector<float> t1({1., 2., 3.});
+        // std::cout << t1.norm_1() << ', ' << t1.norm() << ", " << t1.norm_inf() << std::endl;
 
 
-        Vector<float> t2({-1., -2.});
-        std::cout << t2.norm_1() << ', ' << t2.norm() << ", " << t2.norm_inf() << std::endl;
+        // Vector<float> t2({-1., -2.});
+        // std::cout << t2.norm_1() << ', ' << t2.norm() << ", " << t2.norm_inf() << std::endl;
 
+        // ex05
+        //----------------------------------------------------------------------------
+
+        Vector<float> u({1., 0.});
+        Vector<float> v({1., 0.});
+
+        consine(u, v);
+
+        Vector<float> u1({1., 0.});
+        Vector<float> v1({0., 1.});
+
+        consine(u1, v1);
+
+        Vector<float> u2({-1., 1.});
+        Vector<float> v2({1., -1.});
+
+        consine(u2, v2);
+
+        Vector<float> u3({2., 1.});
+        Vector<float> v3({4., 2.});
+
+        consine(u3, v3);
+
+        Vector<float> u4({1., 2., 3.});
+        Vector<float> v4({4., 5., 6.});
+
+        consine(u4, v4);
     }
     catch (const std::exception &e)
     {
